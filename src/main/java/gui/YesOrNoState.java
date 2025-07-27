@@ -4,7 +4,7 @@ public enum YesOrNoState {
     YES("Да"),
     No("Нет");
 
-    private String title;
+    private final String title;
 
     YesOrNoState(String title) {
         this.title = title;

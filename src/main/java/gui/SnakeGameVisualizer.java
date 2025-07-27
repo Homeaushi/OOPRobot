@@ -101,9 +101,9 @@ public class SnakeGameVisualizer extends JPanel {
     private void move() {
         Point head = snake.getFirst();
         Point newHead = switch (direction) {
-            case UP -> new Point(head.x, (head.y - 1 + height) % height);
+            case UP -> new Point(head.x, (head.y - 1) % height);
             case DOWN -> new Point(head.x, (head.y + 1) % height);
-            case LEFT -> new Point((head.x - 1 + width) % width, head.y);
+            case LEFT -> new Point((head.x - 1) % width, head.y);
             case RIGHT -> new Point((head.x + 1) % width, head.y);
         };
 
@@ -141,13 +141,6 @@ public class SnakeGameVisualizer extends JPanel {
             for (Point p : snake) {
                 g.fillRect(p.x * tileSize, p.y * tileSize, tileSize, tileSize);
             }
-
-//            g.setColor(Color.DARK_GRAY);
-//            for (int x = 0; x < width; x++) {
-//                for (int y = 0; y < height; y++) {
-//                    g.drawRect(x * tileSize, y * tileSize, tileSize, tileSize);
-//                }
-//            }
         } else {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.BOLD, 30));

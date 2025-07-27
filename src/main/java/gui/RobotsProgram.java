@@ -11,11 +11,9 @@ public class RobotsProgram
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-//        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Ошибка при запуске прилдожения:" + e);
+            return;
         }
         SwingUtilities.invokeLater(() -> {
             MainApplicationFrame frame = new MainApplicationFrame();

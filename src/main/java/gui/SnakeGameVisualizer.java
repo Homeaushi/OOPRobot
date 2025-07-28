@@ -18,6 +18,7 @@ public class SnakeGameVisualizer extends JPanel {
     private List<Point> snake;
     private Apple food;
     private int effect;
+    private int score = 1;
     private Direction direction = Direction.RIGHT;
     private boolean running = false;
 
@@ -140,6 +141,7 @@ public class SnakeGameVisualizer extends JPanel {
             else if(food.getColor() == Color.BLUE){
                 effect = 20;
             }
+            score += 1;
             spawnFood();
         } else {
             snake.removeLast();
@@ -165,7 +167,7 @@ public class SnakeGameVisualizer extends JPanel {
         } else {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.BOLD, 30));
-            String message = "Змейка бО-Бо. Ваш счёт: " + (snake.size() - 1);
+            String message = "Змейка бО-Бо. Ваш счёт: " + (score);
             int messageWidth = g.getFontMetrics().stringWidth(message);
             g.drawString(message, (getWidth() - messageWidth) / 2, getHeight() / 2);
 

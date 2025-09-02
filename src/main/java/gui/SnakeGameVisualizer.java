@@ -17,8 +17,8 @@ public class SnakeGameVisualizer extends JPanel {
     private int height;
     private List<Point> snake;
     private Apple food;
-    private int effect;
-    private int score = 1;
+    private int effect_timer;
+    private int score = 0;
     private Direction direction = Direction.RIGHT;
     private boolean running = false;
 
@@ -54,10 +54,10 @@ public class SnakeGameVisualizer extends JPanel {
         Timer timer = new Timer(150, _ -> {
             if (running) {
                 move();
-                if (effect == 0){
+                if (effect_timer == 0) {
                     checkCollision();
-                }else{
-                    effect -= 1;
+                } else {
+                    effect_timer -= 1;
                 }
                 checkFood();
             }
@@ -87,6 +87,7 @@ public class SnakeGameVisualizer extends JPanel {
     }
 
     private void initGame() {
+        score = 0;
         calculateFieldDimensions();
         snake = new LinkedList<>();
         snake.add(new Point(width / 2, height / 2));
@@ -100,9 +101,9 @@ public class SnakeGameVisualizer extends JPanel {
         do {
             x = random.nextInt(width);
             y = random.nextInt(height);
-            if (effect != 0){
+            if (effect_timer != 0) {
                 color = 20;
-            }else {
+            } else {
                 color = random.nextInt(101);
             }
             food = new Apple(x, y, color);
@@ -133,13 +134,12 @@ public class SnakeGameVisualizer extends JPanel {
     }
 
     private void checkFood() {
-        if (snake.getFirst().equals(food.getAsPoint())) {
-            if( food.getColor() == Color.MAGENTA && snake.size() >= 3){
+        if (snake.getFirst().equals(food)) {
+            if (food.getColor() == Color.MAGENTA && snake.size() >= 3) {
                 snake.removeLast();
                 snake.removeLast();
-            }
-            else if(food.getColor() == Color.BLUE){
-                effect = 20;
+            } else if (food.getColor() == Color.BLUE) {
+                effect_timer = 20;
             }
             score += 1;
             spawnFood();
@@ -156,9 +156,9 @@ public class SnakeGameVisualizer extends JPanel {
             g.setColor(food.getColor());
             g.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
 
-            if (effect == 0){
+            if (effect_timer == 0) {
                 g.setColor(Color.GREEN);
-            }else{
+            } else {
                 g.setColor((Color.YELLOW));
             }
             for (Point p : snake) {

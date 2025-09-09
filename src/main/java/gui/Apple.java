@@ -21,10 +21,6 @@ public class Apple extends Point {
         }
     }
 
-    public Point getAsPoint() {
-        return new Point(this.x, this.y);
-    }
-
     public Color getColor() {
         return this.color;
     }

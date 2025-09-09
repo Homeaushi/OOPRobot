@@ -107,7 +107,7 @@ public class SnakeGameVisualizer extends JPanel {
                 color = random.nextInt(101);
             }
             food = new Apple(x, y, color);
-        } while (snake.contains(food.getAsPoint()));
+        } while (snake.contains(food));
     }
 
     private void move() {

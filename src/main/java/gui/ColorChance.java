@@ -3,6 +3,11 @@ package gui;
 import java.awt.*;
 
 public final class ColorChance extends Color {
+    // RA - RED APPLE
+    // BA - BLUE APPLE
+    private static final int UPPER_BORDER_RA = 50;
+    private static final int LOWER_BORDER_RA = 0;
+    private static final int UPPER_BORDER_BA = 85;
 
     private ColorChance(int r, int g, int b) {
         super(r, g, b);
@@ -15,9 +20,9 @@ public final class ColorChance extends Color {
      * Для Магнеты 15%(100 - 85)
      */
     public static Color getColor(int colorChance) {
-        if (colorChance < 50 && colorChance >= 0) {
+        if (colorChance < UPPER_BORDER_RA && colorChance >= LOWER_BORDER_RA) {
             return Color.RED;
-        } else if (colorChance >= 50 && colorChance < 85) {
+        } else if (colorChance >= UPPER_BORDER_RA && colorChance < UPPER_BORDER_BA) {
             return Color.BLUE;
         } else {
             return Color.MAGENTA;

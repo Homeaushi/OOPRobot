@@ -5,10 +5,10 @@ import java.awt.*;
 public class Apple extends Point {
     private final Color color;
 
-    public Apple(int x, int y, int colorChance) {
+    public Apple(int x, int y, Color color) {
         this.x = x;
         this.y = y;
-        this.color = ColorChance.getColor(colorChance);
+        this.color = color;
     }
 
     public Color getColor() {
